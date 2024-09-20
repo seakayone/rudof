@@ -1,9 +1,10 @@
 name: Python
 
 on:
-  release:
-    types:
-      - published
+  push
+  #  release:
+  #    types:
+  #      - published
 
 permissions:
   contents: write
