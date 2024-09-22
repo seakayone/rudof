@@ -27,9 +27,9 @@ jobs:
           install-modules-args: --with-develop --with-configure
       - run: perl -V
 
-      - name: Update Scalar::List::Utils module
+      - name: Update List::Utils module
         run: |
-          cpan install Scalar::List::Utils
+          cpan install List::Utils
 
       - uses: actions/setup-python@v5
         with:
