@@ -20,16 +20,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: ${{ matrix.python-version }}
-          architecture: x64
-
       - uses: shogo82148/actions-setup-perl@v1
         with:
           perl-version: "5.38"
       - run: cpanm --installdeps .
       - run: prove -lv t
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: x64
 
       - name: Build wheels
         uses: PyO3/maturin-action@v1
