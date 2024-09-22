@@ -25,10 +25,7 @@ jobs:
           perl-version: "5.38"
           install-modules-with: cpanm
           install-modules-args: --with-develop --with-configure
-
       - run: perl -V
-      - run: cpanm --installdeps .
-      - run: prove -lv t
 
       - uses: actions/setup-python@v5
         with:
