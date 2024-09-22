@@ -25,6 +25,12 @@ jobs:
           python-version: ${{ matrix.python-version }}
           architecture: x64
 
+      - uses: shogo82148/actions-setup-perl@v1
+        with:
+          perl-version: "5.38"
+      - run: cpanm --installdeps .
+      - run: prove -lv t
+
       - name: Build wheels
         uses: PyO3/maturin-action@v1
         with:
@@ -34,7 +40,6 @@ jobs:
           args: --release --out dist --interpreter ${{ matrix.python-version }}
           sccache: "true"
           before-script-linux: |
-            # If we're running on rhel centos, install needed packages.
             if command -v yum &> /dev/null; then
                 yum update -y && yum install -y perl-core openssl openssl-devel pkgconfig libatomic
 
